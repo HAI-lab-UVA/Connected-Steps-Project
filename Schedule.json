@@ -1,6 +1,6 @@
 [{
    "schedule_id":"binge_drinking",
-   "hours":[-1],
+   "hours":[14],
    "randomize":5,
    "context":["ACTION_AWARE_BATTERY_CHARGING"],
    "start_date":"9-01-2016",
