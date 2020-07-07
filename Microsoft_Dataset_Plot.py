@@ -102,7 +102,7 @@ def scan_trj_label():
     users_strings = ["{0:03}".format(i) for i in range(n_users)]
 
     for i in range(n_users):
-        print("reading user {} data".format(i+1))
+        # print("reading user {} data".format(i+1))
         all_users_trj.append([])
         user_dir = os.getcwd() + "\\Geolife Trajectories 1.3\\Data\\" + users_strings[i]
         user_data_dir = user_dir + "\\Trajectory\\"
