@@ -15,14 +15,15 @@ import os
 import glob
 from pathlib import Path
 from scipy.interpolate import splprep, splev
+from pathlib import Path
 
 import warnings
 warnings.filterwarnings("ignore")
 
 n_users = 182
 column_names = ["Latitude", "Longitude", "Zeros", "Altitude", "Unix_Day", "Date", "Time"]
-smoothing_coeff = 1e-9
-save_plots_here = './Figs/Walking/'
+smoothing_coeff = 1e-10
+save_plots_here = './Figs/Walking/Smoothed_2/'
 
 # def plotLocation(path):
 #     data = np.genfromtxt(path, delimiter=',', dtype=(float, float, float,float,float,object,object),skip_header=6)
@@ -222,16 +223,21 @@ def lat_long_extract(user_id, user_trj_list, start_time, end_time):
     
     # Slicing the dataframe of trajectory from "start_row_read" to "end_row_read"
     trj_df = trj_df.iloc[start_row_read:end_row_read,:]
+    trj_df.reset_index(drop=True, inplace=True)
     
     trip_lat = trj_df['Latitude'].values
     trip_long = trj_df['Longitude'].values
+    trip_timestamp = trj_df['DateTime']
     
     # Getting the smoothed trip long and lat
     trip_long_s, trip_lat_s = trj_smoothing(trj_df)
     
-    return trip_lat, trip_long, trip_lat_s, trip_long_s
+    # Selecting which columns to include in the processsed data
+    trj_df = trj_df[['DateTime', 'Latitude','Longitude']]
+    
+    return trip_lat, trip_long, trip_lat_s, trip_long_s, trip_timestamp, trj_df
 
-def plot_trajectory(lat, long, lat_s, long_s):
+def plot_trajectory(lat, long, lat_s, long_s, trip_id,plot_save_dir = None):
     """
     This function takes latitude and longitute and smoothed latitude and longitude
     values and plots them side by side.
@@ -267,37 +273,37 @@ def plot_trajectory(lat, long, lat_s, long_s):
     
     
     if plot_save_dir is not None:
-        fig.savefig(plot_save_dir + 'User_{}_{}.png'.format(user_id, trip_id))
+        fig.savefig(plot_save_dir + 'User_{}_{}_Smoothed.png'.format(user_id, trip_id))
     return
 
 def read_label(user_id, target_label, all_users_trj, plot_save_dir = None):
-    """
-    This function takes user_id and target_label and trajectory filenames of 
-    all users ("all_users_trj") and reads the label file of that user and extracts
-    all the trips with that target_label. Then it returns the dataframe of the 
-    trimmed label file with start time and end time in integer format.
+    # """
+    # This function takes user_id and target_label and trajectory filenames of 
+    # all users ("all_users_trj") and reads the label file of that user and extracts
+    # all the trips with that target_label. Then it returns the dataframe of the 
+    # trimmed label file with start time and end time in integer format.
 
-    Parameters
-    ----------
-    user_id : Integer
-        index of the user we are interested in. (The user must have a label
-                                                       file).
-    target_label : String 
-        Transportation mode of the user. This should match the labels in the label
-        file (i.e. 'walk', 'bus', 'subway', 'train', 'taxi', 'car')
-    all_users_trj : List of List
-        Each element corresponds to one user and is itself a list of all trajectory
-        filenames of that user.
-    plot_save_dir : Sting, optional
-        A string addressing the directory that plots are going to be saved (i.e.
-        'C:\User\Desktop'). The default is None.
+    # Parameters
+    # ----------
+    # user_id : Integer
+    #     index of the user we are interested in. (The user must have a label
+    #                                                    file).
+    # target_label : String 
+    #     Transportation mode of the user. This should match the labels in the label
+    #     file (i.e. 'walk', 'bus', 'subway', 'train', 'taxi', 'car')
+    # all_users_trj : List of List
+    #     Each element corresponds to one user and is itself a list of all trajectory
+    #     filenames of that user.
+    # plot_save_dir : Sting, optional
+    #     A string addressing the directory that plots are going to be saved (i.e.
+    #     'C:\User\Desktop'). The default is None.
 
-    Returns
-    -------
-    labels_df_select : Dataframe
-        Dataframe of the label file.
+    # Returns
+    # -------
+    # labels_df_select : Dataframe
+    #     Dataframe of the label file.
 
-    """
+    # """
     user_string = "{0:03}".format(user_id)    
     label_path = os.getcwd() + "\\Geolife Trajectories 1.3\\Data\\" \
         + user_string + '\labels.txt'
@@ -308,6 +314,7 @@ def read_label(user_id, target_label, all_users_trj, plot_save_dir = None):
     labels_df['StartTime_int'] = 0
     labels_df['EndTime_int'] = 0
     
+    # Converting date and time to an integer (like the name of the trajectory files)
     for i in range(len(labels_df)):
         labels_df['StartTime_int'][i] = labels_df['StartDateTime'][i].replace(' ','').replace('/','').replace(':','')
         labels_df['EndTime_int'][i] = labels_df['EndDateTime'][i].replace(' ','').replace('/','').replace(':','')
@@ -360,6 +367,8 @@ def trj_smoothing(trj_df):
     
 if __name__ == "__main__":
     
+    avail_labels = ['walk', 'bus', 'train', 'taxi', 'subway', 'car', 'airplane', 'bike']
+    
     # "all_users_trj" is a 2D list that holds all the trajectory filenames of 
     # all users (182 in total). "is_label" is boolean list of 182 elements with
     # "True" is the user has a label file and "False" otherwise
@@ -367,20 +376,37 @@ if __name__ == "__main__":
     
     # "users_with_label" holds the indecies of the users who have labels
     users_with_label = [i for i, x in enumerate(is_label) if x == True]
-    user_id = users_with_label[9]
+    user_id = users_with_label[0]
     
-    # Getting all the entries of the target label (i.e. 'walk') from the label file
-    labels_df_select = read_label(user_id, 'walk', all_users_trj)
+    # # Getting all the entries of the target label (i.e. 'walk') from the label file
+    # labels_df_select = read_label(user_id, 'walk', all_users_trj)
     
     # looping over all trips of target label and plotting them
     plot_save_dir = None
-    for i in range(len(labels_df_select)):
-        print(i)
-        lat, long, lat_s, long_s = lat_long_extract(user_id, all_users_trj[user_id],\
-                                                    labels_df_select['StartTime_int'][i],\
-                                                    labels_df_select['EndTime_int'][i])
-        if len(lat) > 3:
-            plot_trajectory(lat, long, lat_s, long_s)
+    
+    for j in users_with_label:
+        print(j)
+        for l in avail_labels:
+            # Getting all the entries of the target label (i.e. 'walk') from the label file
+            labels_df_select = read_label(j, l, all_users_trj)
+            
+            THE_PATH = os.getcwd() + '\\Preprocessed-Users-Data\\user_%d\\%s'%(j,l)
+            
+            Path(THE_PATH).mkdir(parents=True, exist_ok=True)
+            
+            for i in range(len(labels_df_select)):
+            # for i in range(3):
+
+                lat, long, lat_s, long_s, timestamp, trip_df = \
+                    lat_long_extract(user_id, all_users_trj[user_id],\
+                                     labels_df_select['StartTime_int'][i],\
+                                         labels_df_select['EndTime_int'][i])
+                
+                csv_path = THE_PATH + '\\%d.csv'%(i)
+                trip_df.to_csv(csv_path)
+                
+                # if len(lat) > 3:
+                #     plot_trajectory(lat, long, lat_s, long_s, i, save_plots_here)
 
     
     
