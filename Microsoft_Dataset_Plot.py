@@ -394,6 +394,7 @@ if __name__ == "__main__":
             
             Path(THE_PATH).mkdir(parents=True, exist_ok=True)
             
+            counter = 0
             for i in range(len(labels_df_select)):
             # for i in range(3):
 
@@ -402,8 +403,10 @@ if __name__ == "__main__":
                                      labels_df_select['StartTime_int'][i],\
                                          labels_df_select['EndTime_int'][i])
                 
-                csv_path = THE_PATH + '\\%d.csv'%(i)
-                trip_df.to_csv(csv_path)
+                if len(trip_df)>0:
+                    csv_path = THE_PATH + '\\%d.csv'%(counter)
+                    trip_df.to_csv(csv_path)
+                    counter += 1
                 
                 # if len(lat) > 3:
                 #     plot_trajectory(lat, long, lat_s, long_s, i, save_plots_here)
