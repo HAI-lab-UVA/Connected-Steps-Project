@@ -11,7 +11,7 @@
    "interface":0,
    "esms":[
        {"esm": {
-           "esm_type": 1,
+           "esm_type": 3,
            "esm_title":"Are you starting a walk or finishing?",
            "esm_radios":["Starting","Finishing"],
            "esm_submit":"Next",
@@ -21,7 +21,7 @@
            }
        },
        {"esm": {
-           "esm_type": 2,
+           "esm_type": 3,
            "esm_title":"Who are you walking with?",
            "esm_radios":["Alone","Somebody in the study","Somebody outside of the study"],
            "esm_submit":"Next",
