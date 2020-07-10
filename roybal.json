@@ -17,7 +17,7 @@
            "esm_radios":["Alone","Somebody in the study","Somebody outside of the study"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 60,
-           "esm_trigger": "esm_basic_test_3"
+           "esm_trigger": "esm_basic_test_2"
            }
        },
        {"esm": {
@@ -27,7 +27,7 @@
            "esm_radios":["Starting","Finishing"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 60,
-           "esm_trigger": "esm_basic_test_3"
+           "esm_trigger": "esm_basic_test_2"
            }
        }
     ]
