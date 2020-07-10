@@ -11,20 +11,20 @@
    "interface":0,
    "esms":[
            {"esm": {
-           "esm_type": 3,
+           "esm_type": 2,
            "esm_title":"Who are you walking with?",
-           "esm_instructions":"The user can choose multiple options.",
-           "esm_checkboxes":["Alone","Somebody in the study","Somebody outside of the study"],
+           "esm_instructions":"The user can only choose one option.",
+           "esm_radios":["Alone","Somebody in the study","Somebody outside of the study"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 60,
            "esm_trigger": "esm_basic_test_3"
            }
        },
        {"esm": {
-           "esm_type": 3,
+           "esm_type": 2,
            "esm_title":"Are you starting a walk or finishing?",
-           "esm_instructions":"The user can choose multiple options.",
-           "esm_checkboxes":["Starting","Finishing"],
+           "esm_instructions":"The user can only choose one option.",
+           "esm_radios":["Starting","Finishing"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 60,
            "esm_trigger": "esm_basic_test_3"
