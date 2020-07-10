@@ -10,16 +10,6 @@
    "notification_body":"WALKING_IS_MORE_FUN_WITH_FRIENDS",
    "interface":0,
    "esms":[
-       // {"esm": {
-       //     "esm_type": 1,
-       //     "esm_title":"How many miles do you plan to walk today?",
-       //     "esm_instructions":"",
-       //     "esm_submit":"Submit",
-       //     "esm_expiration_threshold": 60,
-       //     "esm_trigger": "esm_basic_test_1",
-       //     "esm_na": 0
-       //     }
-       // },
        {"esm": {
            "esm_type": 2,
            "esm_title":"Are you starting a walk or finishing?",
@@ -41,44 +31,7 @@
            "esm_trigger": "esm_basic_test_2",
            "esm_na": 0
            }
-       },       
-    //    {"esm": {
-    //        "esm_type": 3,
-    //        "esm_title":"Your Mood Today",
-    //        "esm_instructions":"The user can choose multiple options.",
-    //        "esm_checkboxes":["Good","Bad","Other"],
-	   // "esm_submit":"Next",
-    //        "esm_expiration_threshold": 60,
-    //        "esm_trigger": "esm_basic_test_3"
-    //        }
-    //    },
-    //    {"esm": {
-    //        "esm_type": 7,
-    //        "esm_title":"ESM Date",
-    //        "esm_instructions":"Please select your start time?",
-    //        "esm_submit":"Next",
-    //        "esm_expiration_threshold": 60,
-    //        "esm_trigger": "esm_basic_test_7"
-    //        }
-    //    },
-    //    {"esm": {
-    //        "esm_type": 7,
-    //        "esm_title":"ESM Date",
-    //        "esm_instructions":"Please select your end time",
-    //        "esm_submit":"Next",
-    //        "esm_expiration_threshold": 60,
-    //        "esm_trigger": "esm_basic_test_7"
-    //        }
-    //    },
-      // {"esm": {
-      //    "esm_type":14,
-      //    "esm_title":"ESM Picture",
-      //    "esm_instructions":"This is a Picture ESM.",
-      //    "esm_submit":"Next",
-      //     "esm_expiration_threshold": 60,
-      //    "esm_trigger":"esm_basic_test_14"
-      //  }
-      // }
+       }       
     ]
   }
 ]
