@@ -11,9 +11,8 @@
    "interface":0,
    "esms":[
        {"esm": {
-           "esm_type": 2,
+           "esm_type": 1,
            "esm_title":"Are you starting a walk or finishing?",
-           //"esm_instructions":"If you select \"no\" for this question, skip for the following questions",
            "esm_radios":["Starting","Finishing"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 0,
@@ -24,14 +23,13 @@
        {"esm": {
            "esm_type": 2,
            "esm_title":"Who are you walking with?",
-           //"esm_instructions":"If you select \"no\" for this question, skip for the following questions",
            "esm_radios":["Alone","Somebody in the study","Somebody outside of the study"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 0,
            "esm_trigger": "esm_basic_test_2",
            "esm_na": 0
            }
-       }       
+       }
     ]
   }
 ]
