@@ -212,6 +212,8 @@ def lat_long_extract(user_id, user_trj_list, start_time, end_time):
             if trj_df['DateTime'][i] >= start_time:
                 start_row_read = i
                 break;
+    else:
+        return None
     
     if is_end_time == True:
         for i in range(start_row_read,len(trj_df)):
@@ -237,7 +239,7 @@ def lat_long_extract(user_id, user_trj_list, start_time, end_time):
     
     return trip_lat, trip_long, trip_lat_s, trip_long_s, trip_timestamp, trj_df
 
-def plot_trajectory(lat, long, lat_s, long_s, trip_id,plot_save_dir = None):
+def plot_trajectory(lat, long, lat_s, long_s, trip_id, user_id, label, plot_save_dir = None):
     """
     This function takes latitude and longitute and smoothed latitude and longitude
     values and plots them side by side.
@@ -273,7 +275,7 @@ def plot_trajectory(lat, long, lat_s, long_s, trip_id,plot_save_dir = None):
     
     
     if plot_save_dir is not None:
-        fig.savefig(plot_save_dir + 'User_{}_{}_Smoothed.png'.format(user_id, trip_id))
+        fig.savefig(plot_save_dir + 'User_{}_{}_{}_Smoothed.png'.format(label, user_id, trip_id))
     return
 
 def read_label(user_id, target_label, all_users_trj, plot_save_dir = None):
@@ -376,7 +378,7 @@ if __name__ == "__main__":
     
     # "users_with_label" holds the indecies of the users who have labels
     users_with_label = [i for i, x in enumerate(is_label) if x == True]
-    user_id = users_with_label[0]
+    # user_id = users_with_label[0]
     
     # # Getting all the entries of the target label (i.e. 'walk') from the label file
     # labels_df_select = read_label(user_id, 'walk', all_users_trj)
@@ -385,6 +387,8 @@ if __name__ == "__main__":
     plot_save_dir = None
     
     for j in users_with_label:
+    # for j in range(21,22):
+
         print(j)
         for l in avail_labels:
             # Getting all the entries of the target label (i.e. 'walk') from the label file
@@ -396,20 +400,27 @@ if __name__ == "__main__":
             
             counter = 0
             for i in range(len(labels_df_select)):
-            # for i in range(3):
-
-                lat, long, lat_s, long_s, timestamp, trip_df = \
-                    lat_long_extract(user_id, all_users_trj[user_id],\
+                
+                
+                res = \
+                    lat_long_extract(j, all_users_trj[j],\
                                      labels_df_select['StartTime_int'][i],\
                                          labels_df_select['EndTime_int'][i])
+                if res == None:
+                    continue
+                else:
+                    lat, long, lat_s, long_s, timestamp, trip_df = \
+                        res[0], res[1], res[2], res[3], res[4], res[5]
                 
+                print('user {} \t label {} \t file {}'.format(j,l,i))
+                print('\t start timestamp: ',labels_df_select['StartTime_int'][i])
                 if len(trip_df)>0:
                     csv_path = THE_PATH + '\\%d.csv'%(counter)
                     trip_df.to_csv(csv_path)
                     counter += 1
                 
                 # if len(lat) > 3:
-                #     plot_trajectory(lat, long, lat_s, long_s, i, save_plots_here)
+                #     plot_trajectory(lat, long, lat_s, long_s, i, j, l, save_plots_here)
 
     
     
