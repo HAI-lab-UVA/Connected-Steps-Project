@@ -54,7 +54,7 @@
             "esm_type": 3,
             "esm_title":"In what scenario/format/type you were walking?",
             "esm_instructions":"You may choose multiple options",
-            "esm_checkboxes":["Social Distancing","No Social Distancing","Waliking Towards a Different Direction","Waliking Towards the Same Direction","Walking While Virtually Chatting"],
+            "esm_checkboxes":["Social Distancing","No Social Distancing","Walking Towards Different Directions","Walking Towards the Same Direction","Walking While Virtually Chatting"],
             "esm_submit":"Next",
             "esm_expiration_threshold": 0,
             "esm_trigger": "esm_basic_test_3"
