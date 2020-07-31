@@ -13,8 +13,8 @@
         {"esm": {
            "esm_type": 3,
            "esm_title":"Who are you walking with?",
-           "esm_instructions":"You may choose multiple options",
-           "esm_checkboxes":["Just Myself","ChuanChuanH","IanL","JessieL","JiajiaL","MehrdadF","RunzeY","Other"],
+           "esm_instructions":"You may choose multiple options. If you choose Other, please specify the relationship(Roommate, Colleague, Partner etc.) in the prompt window.",
+           "esm_checkboxes":["Just Myself","ChuanChuanH","IanL","JessieL","JiajiaL","MehrdadF","RunzeY","Other:"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 0,
            "esm_trigger": "esm_basic_test_3"
