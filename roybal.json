@@ -22,7 +22,7 @@
        },
         {"esm": {
            "esm_type": 1,
-           "esm_title":"If you've selected 'Other' in the previous question, please specify the repationship(Roommate, Partner, Colleague etc.). You may skip this question if you are walking w/ someone in this study.",
+           "esm_title":"If you've selected Other in the previous question, please specify the repationship(Roommate, Partner, Colleague etc.). You may skip this question if you are walking w/ someone in this study.",
            "esm_instructions":"",
            "esm_submit":"Submit",
            "esm_expiration_threshold": 0,
