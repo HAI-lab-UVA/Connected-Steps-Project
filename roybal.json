@@ -14,18 +14,28 @@
            "esm_type": 3,
            "esm_title":"Who are you walking with?",
            "esm_instructions":"You may choose multiple options",
-           "esm_checkboxes":["AfsanehD","ChuanChuanH","IanL","JessieL","JiajiaL","MehrdadF","RunzeY","Other"],
+           "esm_checkboxes":["Just Myself","ChuanChuanH","IanL","JessieL","JiajiaL","MehrdadF","RunzeY","Other"],
            "esm_submit":"Next",
            "esm_expiration_threshold": 0,
            "esm_trigger": "esm_basic_test_3"
            }
        },
+        {"esm": {
+           "esm_type": 1,
+           "esm_title":"If you've selected 'Other' in the previous question, please specify the repationship(Roommate, Partner, Colleague etc.). You may skip this question if you are walking w/ someone in this study.",
+           "esm_instructions":"",
+           "esm_submit":"Submit",
+           "esm_expiration_threshold": 0,
+           "esm_trigger": "esm_basic_test_1",
+           "esm_na": 0
+           }
+       }
        {"esm": {
            "esm_type": 2,
            "esm_title":"Are you starting a walk?",
            "esm_instructions":"Please don't forget to END this survey after your walk (the next question), and leave AWARE running in background. Have fun walking!",
            "esm_radios":["Yes","No"],
-           "esm_submit":"Next",
+           "esm_submit":"Let's Go!",
            "esm_expiration_threshold": 0,
            "esm_trigger": "esm_basic_test_2"
            }
@@ -40,6 +50,16 @@
             "esm_trigger": "esm_basic_test_2"
            }
        },
+      {"esm": {
+            "esm_type": 3,
+            "esm_title":"In what scenario/format/type you were walking?",
+            "esm_instructions":"You may choose multiple options",
+            "esm_checkboxes":["Social Distancing","No Social Distancing","Waliking Towards a Different Direction","Waliking Towards the Same Direction","Walking While Virtually Chatting"],
+            "esm_submit":"Next",
+            "esm_expiration_threshold": 0,
+            "esm_trigger": "esm_basic_test_3"
+           }
+       },       
       {"esm": {
             "esm_type": 3,
             "esm_title":"How are you feeling after the walk?",
