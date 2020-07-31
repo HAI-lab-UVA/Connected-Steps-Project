@@ -20,16 +20,6 @@
            "esm_trigger": "esm_basic_test_3"
            }
        },
-        {"esm": {
-           "esm_type": 1,
-           "esm_title":"If you've selected Other in the previous question, please specify the repationship(Roommate, Partner, Colleague etc.). You may skip this question if you are walking w/ someone in this study.",
-           "esm_instructions":"",
-           "esm_submit":"Next",
-           "esm_expiration_threshold": 0,
-           "esm_trigger": "esm_basic_test_1",
-           "esm_na": 0
-           }
-       },
        {"esm": {
            "esm_type": 2,
            "esm_title":"Are you starting a walk?",
