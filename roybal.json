@@ -24,7 +24,7 @@
            "esm_type": 2,
            "esm_title":"Are you starting a walk?",
            "esm_instructions":"Please don't forget to END this survey after your walk (the next question), and leave AWARE running in background. Have fun walking!",
-           "esm_radios":["Yes","No"],
+           "esm_radios":["Yes, I'm Ready!"],
            "esm_submit":"Let's Go!",
            "esm_expiration_threshold": 0,
            "esm_trigger": "esm_basic_test_2"
@@ -34,7 +34,7 @@
             "esm_type": 2,
             "esm_title":"Have you just finished walking?",
             "esm_instructions":"The user can only choose one option.",
-            "esm_radios":["Yes","No"],
+            "esm_radios":["Yes, I'm Done!"],
             "esm_submit":"Next",
             "esm_expiration_threshold": 0,
             "esm_trigger": "esm_basic_test_2"
@@ -42,7 +42,7 @@
        },
       {"esm": {
             "esm_type": 3,
-            "esm_title":"In what scenario/format/type you were walking?",
+            "esm_title":"In what scenario/format/type were you walking?",
             "esm_instructions":"You may choose multiple options",
             "esm_checkboxes":["Social Distancing","No Social Distancing","Walking Towards Different Directions","Walking Towards the Same Direction","Walking While Virtually Chatting"],
             "esm_submit":"Next",
